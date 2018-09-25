@@ -23,21 +23,17 @@ namespace Model.Repositories
     {
         public override string CreateSeleteString()
         {
-            return "SELECT * FROM [Product]";
+            return "SELECT * FROM [Product] ";
         }
 
-
-
-        public Product FindBy(int id)
+        public override string SeleteIdString()
         {
-            var sqlCommand = string.Format(@"SELECT  * FROM[POP_DEMO].[dbo].[Product] where Id = @Id");
-            return this.DbConnection.Query<Product>(sqlCommand, new
-            {
-                id
-            }).FirstOrDefault();
+            return @"SELECT  * FROM[POP_DEMO].[dbo].[Product] where Id = @Id";
         }
 
-        public int Add(Product entity)
+       
+
+        public override int Add(Product entity)
         {
             var sqlCommand = string.Format(@"INSERT INTO[dbo].[Product]([Name],[Price])VALUES (@Name, @Price)");
             return this.DbConnection.Execute(sqlCommand, new
@@ -47,7 +43,7 @@ namespace Model.Repositories
             });
         }
 
-        public int Update(Product entity)
+        public override int Update(Product entity)
         {
             var sqlCommand = string.Format(@"UPDATE [dbo].[Product] SET [Name] = @Name ,[Price] = @Price WHERE [Id] = @Id");
             return this.DbConnection.Execute(sqlCommand, new
@@ -58,7 +54,7 @@ namespace Model.Repositories
             });
         }
 
-        public int Delete(Product entity)
+        public override int Delete(Product entity)
         {
             var sqlCommand = string.Format(@"DELETE FROM [dbo].[Product] WHERE Id = @Id");
             return this.DbConnection.Execute(sqlCommand, new
