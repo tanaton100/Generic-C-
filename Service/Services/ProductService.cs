@@ -18,7 +18,7 @@ namespace Service.Services
 
     public class ProductService : IProductService
     {
-        private IProductRepository _productRepository;
+        private readonly IProductRepository _productRepository;
 
         public ProductService()
         {
@@ -42,6 +42,7 @@ namespace Service.Services
 
         public bool Add(Product product)
         {
+            
             return _productRepository.Add(product) > 0;
         }
 

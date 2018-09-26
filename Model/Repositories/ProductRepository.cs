@@ -25,13 +25,7 @@ namespace Model.Repositories
         {
             return "SELECT * FROM [Product] ";
         }
-
-        public override string SeleteIdString()
-        {
-            return @"SELECT  * FROM[POP_DEMO].[dbo].[Product] where Id = @Id";
-        }
-
-       
+ 
 
         public override int Add(Product entity)
         {
