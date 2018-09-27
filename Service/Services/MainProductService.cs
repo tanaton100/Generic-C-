@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using Model.Models;
 using Model.Repositories;
 
@@ -26,7 +24,7 @@ namespace Service.Services
             _mainProductRepository =  new MainProductRepository();
         }
 
-        public MainProductService(MainProductRepository mainProductRepository)
+        public MainProductService(IMainProductRepository mainProductRepository)
         {
             _mainProductRepository = mainProductRepository;
         }
@@ -60,17 +58,36 @@ namespace Service.Services
 
         public bool Update(MainProduct mainProduct)
         {
-            return _mainProductRepository.Update(mainProduct) > 0;
+            var result = false;
+            var mainproduct = FindByName(mainProduct.Name);
+            if (mainproduct == null)
+            {
+                result = _mainProductRepository.Update(mainProduct) > 0;
+            }
+            else
+            {
+                throw new Exception("Dupicate Update product Name");
+            }
+            return result;
         }
 
         public bool Detele(MainProduct mainProduct)
         {
-            return _mainProductRepository.Delete(mainProduct) > 0;
+            var result = false;
+            var mainproduct = FindById(mainProduct.Id);
+            if (mainproduct == null)
+            {
+                throw new Exception("Can't FindId");
+            }
+            else
+            {
+                result = _mainProductRepository.Delete(mainProduct) > 0;
+            }
+            return result;
         }
 
         public MainProduct FindByName(string name)
-        {
-            
+        {   
             return _mainProductRepository.FindByName(name);
         }
 
