@@ -61,7 +61,7 @@ namespace WebApi.Controllers
         public bool Delete(int id)
         {
             var mainProduct = new MainProduct {Id = id};
-            return _mainProductService.Detele(mainProduct);
+            return _mainProductService.Delete(mainProduct);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Service.Services
         MainProduct FindById(int id);
         bool Add(MainProduct mainProduct);
         bool Update(MainProduct mainProduct);
-        bool Detele(MainProduct mainProduct);
+        bool Delete(MainProduct mainProduct);
         MainProduct FindByName(string name);
     }
 
@@ -36,7 +36,7 @@ namespace Service.Services
 
         public MainProduct FindById( int id)
         {
-            return _mainProductRepository.FindBy(id);
+            return _mainProductRepository.FindById(id);
         }
 
         public bool Add(MainProduct mainProduct)
@@ -58,7 +58,7 @@ namespace Service.Services
 
         public bool Update(MainProduct mainProduct)
         {
-            var result = false;
+            var result = false;           
             var mainproduct = FindByName(mainProduct.Name);
             if (mainproduct == null)
             {
@@ -71,7 +71,7 @@ namespace Service.Services
             return result;
         }
 
-        public bool Detele(MainProduct mainProduct)
+        public bool Delete(MainProduct mainProduct)
         {
             var result = false;
             var mainproduct = FindById(mainProduct.Id);

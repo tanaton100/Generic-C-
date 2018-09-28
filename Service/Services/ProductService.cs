@@ -37,7 +37,7 @@ namespace Service.Services
 
         public Product GetById(int id)
         {
-            return _productRepository.FindBy(id);
+            return _productRepository.FindById(id);
         }
 
         public bool Add(Product product)

@@ -10,7 +10,7 @@ namespace Model.Repositories
     public interface IMainProductRepository
     {
         List<MainProduct> GetAll();
-        MainProduct FindBy(int id);
+        MainProduct FindById(int id);
         int Add(MainProduct entity);
         int Update(MainProduct entity);
         int Delete(MainProduct entity);

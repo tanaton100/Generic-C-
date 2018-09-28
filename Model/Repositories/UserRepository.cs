@@ -13,7 +13,7 @@ namespace Model.Repositories
     public interface IUserRepository
     {
         List<User> GetAll();
-        User FindBy(int id);
+        User FindById(int id);
         int Add(User entity);
         int Update(User entity);
         int Delete(User entity);

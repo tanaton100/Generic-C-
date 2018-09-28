@@ -14,7 +14,7 @@ namespace Model.Repositories
     {
         public IDbConnection DbConnection { get; set; }
 
-        public GenericReposiory()
+        protected GenericReposiory()
         {
             this.DbConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
         }
@@ -25,7 +25,7 @@ namespace Model.Repositories
             return DbConnection.Query<TModel>(CreateSeleteString()).ToList();
          }
 
-        public TModel FindBy(int id)
+        public TModel FindById(int id)
         {
             return this.DbConnection.Query<TModel>(CreateSeleteString()+ " WHERE Id = @Id", new
             {

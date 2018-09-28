@@ -37,7 +37,7 @@ namespace Service.Services
 
         public User GetById(int id)
         {
-            return _userRepository.FindBy(id);
+            return _userRepository.FindById(id);
         }
 
         public bool Add(User user)

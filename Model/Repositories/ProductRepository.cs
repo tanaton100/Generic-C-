@@ -13,7 +13,7 @@ namespace Model.Repositories
     public interface IProductRepository
     {
         List<Product> GetAll();
-        Product FindBy(int id);
+        Product FindById(int id);
         int Add(Product entity);
         int Update(Product entity);
         int Delete(Product entity);
